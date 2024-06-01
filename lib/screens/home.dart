@@ -110,15 +110,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   handleTodoChange(Todo todo) {
-    setState(() {
-      if (todo.isDone == true) {
-        print("todo is done");
-        todo.isDone = false;
-      } else {
-        todo.isDone = true;
-        print("todo is not done");
-      }
-    });
+    if (todo.isDone != null) {
+      setState(() {
+        todo.isDone = !todo.isDone!;
+      });
+    } else {
+      setState(() {
+        todo.isDone = true; // or false, depending on your default logic
+      });
+    }
   }
 
   handleTodoDelete(String id) {
